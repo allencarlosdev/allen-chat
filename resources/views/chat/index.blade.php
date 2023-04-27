@@ -30,7 +30,7 @@
         </form>
       </section>
       <script src="https://kit.fontawesome.com/0b01b67c65.js" crossorigin="anonymous"></script>
-      <script src="/js/app.js"></script>
-      <script src="/js/chat.js"></script>
+      <script src="{{asset('js/app.js')}}"></script>
+      <script src="{{asset('js/chat.js')}}"></script>
 </body>
 </html>
