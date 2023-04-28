@@ -12,7 +12,7 @@ class Chat extends Model
     //many to many relationship
     public function users()
     {
-        return $this->belongsToMany('App\Models\Users');
+        return $this->belongsToMany('App\Models\User');
     }
 
     //one to many relationship
