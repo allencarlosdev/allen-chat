@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Message;
 
 class Chat extends Model
 {
@@ -12,12 +14,13 @@ class Chat extends Model
     //many to many relationship
     public function users()
     {
-        return $this->belongsToMany('App\Models\User');
+    	return $this->belongsToMany(User::class);
     }
 
     //one to many relationship
-    public function messages()
+    public function messages() 
     {
-        return $this->hasMany('App\Models\message');
+    	return $this->hasMany(Message::class);
     }
+
 }
