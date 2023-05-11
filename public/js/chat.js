@@ -1,11 +1,37 @@
 const msgerForm = get(".msger-input-area");
 const msgerInput = get(".msger-input");
 const msgerChat = get(".msger-chat");
-const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
+const PERSON_IMG = "/img/profile_user.svg";
 const chatWith = get(".chat-with");
 const typing = get(".typing");
 const chatStatus = get(".chat-status");
 const chatId = window.location.pathname.substr(6);
+let authUser;
+
+window.onload = function () {
+    axios
+        .get("/auth/user")
+        .then((res) => {
+            authUser = res.data.authUser;
+        })
+        .then(() => {
+            axios
+                .get(`/chat/${chatId}/get_users`)
+                .then((res) => {
+                    let results = res.data.users.filter(
+                        (user) => user.id != authUser.id
+                    );
+
+                    if (results.length > 0)
+                        chatWith.innerHTML = results[0].name;
+                });
+        })
+        .then(() => {
+            axios.get(`/chat/${chatId}/get_messages`).then((res) => {
+                appendMessages(res.data.messages);
+            });
+        })
+};
 
 msgerForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -36,6 +62,21 @@ msgerForm.addEventListener("submit", (event) => {
     msgerInput.value = "";
 });
 
+function appendMessages(messages) {
+    let side = "left";
+    messages.forEach((message) => {
+        side = (message.user_id == authUser.id) ? "right" : "left";
+
+        appendMessage(
+            message.user.name,
+            PERSON_IMG,
+            side,
+            message.content,
+            formatDate(new Date(message.created_at))
+        );
+    });
+}
+
 function appendMessage(name, img, side, text, date) {
     //   Simple solution for small apps
     const msgHTML = `
@@ -54,7 +95,7 @@ function appendMessage(name, img, side, text, date) {
 `;
 
     msgerChat.insertAdjacentHTML("beforeend", msgHTML);
-    msgerChat.scrollTop += 500;
+    scrollToBottom();
 }
 
 // Echo
@@ -74,4 +115,8 @@ function formatDate(date) {
     const m = "0" + date.getMinutes();
 
     return `${d}/${mo}/${y} ${h.slice(-2)}:${m.slice(-2)}`;
+}
+
+function scrollToBottom() {
+    msgerChat.scrollToBottom = msgerChat.scrollHeight;
 }
