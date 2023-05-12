@@ -11,6 +11,7 @@
     --msger-header: rgba(255, 255, 255, 0.3);
     --border: 2px solid #ddd;
     --left-msg-bg: #ececec;
+    --bar-scroll: #000;
     --right-msg-bg: #6a5acd;
     --icon: #183068;
     --online: #00c441;
@@ -73,7 +74,7 @@ body {
     background: var(--left-msg-bg);
 }
 .msger-chat::-webkit-scrollbar-thumb {
-    background: var(--left-msg-bg);
+    background: var(--bar-scroll);
 }
 .msg {
     display: flex;
