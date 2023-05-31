@@ -32,11 +32,13 @@ html {
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-image: var(--body-bg);
     font-family: Helvetica, sans-serif;
+    overflow: hidden;
 }
 
 .msger {
@@ -46,7 +48,7 @@ body {
     width: 100%;
     max-width: 867px;
     margin: 25px 10px;
-    height: calc(100% - 50px);
+    height: calc(90% - 50px);
     border: var(--border);
     border-radius: 5px;
     background: var(--msger-bg);
@@ -174,4 +176,28 @@ span.chat-status.offline {
 .typing {
     font-size: 12px;
     font-style: italic;
+}
+
+.btn{
+    display: flex;
+    justify-content: end;
+    padding: 1rem;
+}
+
+.btn-home{
+    padding: 0.5rem 1rem;
+    background-color: var(--right-msg-bg);
+    height: 2rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: var(--left-msg-bg);
+}
+
+/* Responsive */
+@media screen and (max-width:1300px)
+{
+    .msger{
+        margin: 1rem;
+        width: 90%;
+    }
 }

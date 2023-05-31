@@ -32,7 +32,11 @@
 				<button type="submit" class="msger-send-btn">Send</button>
 			</form>
 
+			
 		</section>
+		<div class="btn">
+			<a class="btn-home" href="{{ route('welcome.index')}}">Home</a>
+		</div>
 
 		<script src='https://kit.fontawesome.com/0b01b67c65.js'></script>
 		<script  src="/js/app.js"></script>

@@ -43,6 +43,7 @@ main {
     background-color: var(--bg-list);
     border-radius: 2rem;
 }
+
 .btn{
     display: flex;
     justify-content: end;
