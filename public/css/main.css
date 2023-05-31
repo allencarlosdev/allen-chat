@@ -114,3 +114,51 @@ main {
     width: 90%;
 }
 
+/* Responsive */
+
+@media screen and (max-width:1440px){
+    main{
+        width:70%;
+        height:65vh;
+    }
+}
+
+@media screen and (max-width:1280px){
+
+    .users-list__h2 {
+        margin: 2rem 1rem;
+        font-size: 1.2rem;
+    }
+
+    .users-list__list {
+        padding: 1rem;
+    }
+
+    .users-list__a {
+        width: 60%;
+    }
+
+}
+
+@media screen and (max-width:600px){
+    .image-chat{
+        display: none;
+    }
+
+    .users-list{
+        width: 100%;
+    }
+
+    .users-list__a{
+        align-items: center;
+        margin: 0.5rem auto;
+    }
+}
+
+@media screen and (max-width:400px){
+    main {
+      width: 90%;  
+      height: 75vh;
+      margin-top: 1.5rem;
+    }
+}
